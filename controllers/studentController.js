@@ -24,6 +24,13 @@ module.exports.fetchAllStudents = async (req,res)=>{
   res.send(result);
 }
 
+// student - search api
+module.exports.searchApi = async (req,res)=>{
+    const roll = parseInt(req.params.roll);
+    const result = await StudentModel.find({ $where: `/^${roll}.*/.test(this.roll)` });
+    res.send(result);
+}
+
 // delete
 module.exports.deleteStudent = async (req,res)=>{
   const id = req.params.id;
