@@ -28,8 +28,9 @@ module.exports.fetchAllStudents = async (req,res)=>{
 
 // student - search api
 module.exports.searchApi = async (req,res)=>{
-    const roll = parseInt(req.params.roll);
-    const result = await StudentModel.find({ $where: `/^${roll}.*/.test(this.roll)` });
+    const rollNum = parseInt(req.params.roll);
+    // const result = await StudentModel.find({ $where: `/^${rollNum}.*/.test(this.roll)` });
+    const result = await StudentModel.find({ roll: rollNum });
     res.send(result);
 }
 

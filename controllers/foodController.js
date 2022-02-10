@@ -19,6 +19,12 @@ module.exports.addFood = async (req,res)=>{
 
 // get
 module.exports.fetchAllFood = async (req,res)=>{
+  const result = await FoodModel.find({});
+  res.send(result);
+}
+
+// get - pagination
+module.exports.fetchFood = async (req,res)=>{
   const skip = req.query.skip;
   const limit = req.query.limit;
   const result = await FoodModel.find({}).limit(parseInt(limit)).skip(parseInt(skip));
