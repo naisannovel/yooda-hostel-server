@@ -20,7 +20,9 @@ module.exports.addStudent = async (req,res)=>{
 
 // get
 module.exports.fetchAllStudents = async (req,res)=>{
-  const result = await StudentModel.find({});
+  const skip = req.query.skip;
+  const limit = req.query.limit;
+  const result = await StudentModel.find({}).limit(parseInt(limit)).skip(parseInt(skip));
   res.send(result);
 }
 

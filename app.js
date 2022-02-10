@@ -11,6 +11,7 @@ dotenv.config();
 const userAuthRouter = require('./routers/userAuthRouter');
 const foodRouter = require('./routers/foodRouter');
 const studentRouter = require('./routers/studentRouter');
+const distributeRouter = require('./routers/distributeRouter');
 
 
 // Middleware
@@ -27,6 +28,7 @@ app.get('/',(req,res)=>{
 app.use('/api',userAuthRouter);
 app.use('/api',foodRouter);
 app.use('/api',studentRouter);
+app.use('/api',distributeRouter);
 
 app.use((err, req, res, next)=>{
     return res.status(500).send(err.message)
